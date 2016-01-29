@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="LindaClient:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="LindaClient.war">
+      <element id="artifact" artifact-name="LindaClient:war exploded" />
+    </root>
+  </artifact>
+</component>
