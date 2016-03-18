@@ -20,5 +20,9 @@
 	-->
 	<!-- 转账 -->	
 	<dubbo:reference id="tsi" interface="com.lm.service.TranService" />	
+    <!-- 缓存 -->	
+	<dubbo:reference id="redisCluster" interface="com.lm.service.RedisServiceCluster" />	
+	<!-- 消息 -->	
+	<dubbo:reference id="mesSender" interface="com.lm.service.MesSenderService" />	
 	
 </beans>
