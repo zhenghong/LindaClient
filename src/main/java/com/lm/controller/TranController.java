@@ -48,13 +48,5 @@ public class TranController extends BaseController {
 		mesSender.sendQueue(mi);
 
 		return new ResultData();
-	}
-
-	@MessageMapping("/hello")
-	@SendTo("/tweet/fuck")
-	public @ResponseBody ResultData TranNotify(String message) throws Exception {
-
-		return new ResultData();
-	}
-	
+	}	
 }
