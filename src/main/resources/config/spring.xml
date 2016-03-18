@@ -18,41 +18,6 @@
 	
 	<bean id="springContextUtil" class="com.lm.utils.SpringContextUtil" />
 	
-	<!-- activeMQ 	
-    <bean id="jmsXaConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-        <property name="brokerURL" value="tcp://localhost:61616" />
-    </bean>
-
-    <bean id="jmsConnectionFactory" class="com.atomikos.jms.AtomikosConnectionFactoryBean" init-method="init">
-        <property name="uniqueResourceName" value="XAactiveMQ" />
-        <property name="xaConnectionFactory" ref="jmsXaConnectionFactory" />
-        <property name="poolSize" value="50"/>
-    </bean>
-		
-	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="jmsConnectionFactory"/>
-        <property name="defaultDestination" ref="asyncQueue" /> 
-        <property name="sessionTransacted" value="true" />
-    </bean>
-	-->
-		
-	<!--queue通道 
-	<bean id="asyncQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="asyncQueue"/>
-	</bean>
-	-->
-	<!--topic通道 
-	<bean id="asyncTopic" class="org.apache.activemq.command.ActiveMQTopic">
-		<constructor-arg value="asyncTopic"/>
-	</bean>
-	-->
-	<!-- 消息监听容器  
-	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">  
-	    <property name="connectionFactory" ref="jmsConnectionFactory" />  
-	    <property name="destination" ref="asyncQueue" />  
-	    <property name="messageListener" ref="consumerMessageListener" />  
-	</bean>
-	-->
 	<!-- import xml -->
 	<import resource="dubboC.xml"/>
 	
