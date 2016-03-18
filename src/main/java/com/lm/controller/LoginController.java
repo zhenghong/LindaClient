@@ -1,6 +1,8 @@
 package com.lm.controller;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.lm.api.LoginDataI;
 import com.lm.api.LoginDataO;
 import com.lm.api.LogoutDataI;
 import com.lm.api.LogoutDataO;
 import com.lm.model.User;
+import com.lm.service.RedisServiceCluster;
 import com.lm.service.UserService;
-import com.lm.service.UserSessionService;
 
 @Controller
 public class LoginController extends BaseController{
@@ -25,7 +26,8 @@ public class LoginController extends BaseController{
 	
 	@Autowired
 	private UserService usi;
-	
+	@Autowired
+	private RedisServiceCluster redisCluster;
 	//@Autowired
 	//private UserSessionService ussi;
 	
@@ -55,11 +57,12 @@ public class LoginController extends BaseController{
 		}
 		result.setUserName(user.getUserName());
 		
-		// session redis »º´æ
-		//String SID = ussi.add(user);
-				
-		// Êä³ö
-		//result.setSID(SID);
+		// »º´æ
+		Map<String, String> us = new HashMap<String, String>();
+		us.put("id", user.getUserId());
+		us.put("name", user.getUserName());
+		us.put("email", user.getEmail());
+		redisCluster.addHash(user.getUserId(), us);
 		
 		return result;
 	}
